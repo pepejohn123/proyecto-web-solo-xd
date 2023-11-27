@@ -14,6 +14,7 @@ class DocumentController {
                 if (response) {
                     console.log('Document created:', response);
                     res.send(response);
+                    
                 }
                 else {
                     res.sendStatus(400);

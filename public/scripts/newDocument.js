@@ -58,31 +58,30 @@ $(document).ready(function () {
                 const permit = new FormData();
                 console.log(response);
                 permit.append('owner',response.owner);
-
+                permit.append('document',response._id)
                 // Continue with any further actions
                 alert("Added!");
                 //window.location.href = "/home";
-                //performThirdPost(baseUrl,image, formData);
+                performThirdPost(baseUrl,permit);
             },
             error: function (error) {
                 console.error('Error in second POST request:', error);
             }
         });
     }
-    function performThirdPost(baseUrl,image,formData) {
+    function performThirdPost(baseUrl,permit) {
         
         // You can customize this part based on your needs
         $.ajax({
             type: 'POST',
             url: baseUrl + 'permits', // Replace with your second endpoint
-            data: image, // Replace with your second POST data
+            data: permit, // Replace with your second POST data
             contentType: false,
             processData: false,
             success: function (response) {
                 console.log('Third POST request successful:', response);
                 // Continue with any further actions
                 //window.location.href = "/home";
-                performSecondPost(baseUrl,image, formData);
             },
             error: function (error) {
                 console.error('Error in second POST request:', error);
