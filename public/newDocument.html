@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Document Management</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/style/home.css">
+</head>
+<body>
+
+<!-- Form above the navbar -->
+<div class="container mt-3">
+    <form>
+        <div class="form-row align-items-center">
+            <div class="col-md-4 mb-3">
+                <label for="name">Name<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="name" placeholder="Enter Name" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="expeditionDate">Expedition Date<span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="expeditionDate" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="expirationDate">Expiration Date</label>
+                <input type="date" class="form-control" id="expirationDate">
+            </div>
+            <div class="col-md-12 mb-3">
+                <label for="fileInput">File Upload<span class="text-danger">*</span></label>
+                <input type="file" class="form-control-file" id="fileInput" required>
+            </div>
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Navbar with centered title -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <a class="navbar-brand text-center" href="#">
+        <img src="https://www.marismith.com/wp-content/uploads/2014/07/facebook-profile-blank-face.jpeg" alt="Profile Image" class="profile-img">
+        <span id="userName">Welcome to Document Manager!    </span>
+    </a>
+
+</nav>
+
+<!-- Options container -->
+<div class="container options-container mt-5">
+    <!-- Add your buttons here -->
+    <!-- ... -->
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="/assets/scripts/user_info.js"></script>
+
+
+</body>
+</html>

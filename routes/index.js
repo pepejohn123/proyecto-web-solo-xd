@@ -48,7 +48,8 @@ router.post('/register',registerController.register);
 router.use(authMiddleware);
 router.get('/credentials',documentController.ver);
 router.post('/credentials',documentController.insertar);
-router.get('/home',homeController);
+router.get('/:page', homeController);
+
 
 router.post('/upload',uploadMiddleware.single('archivo'),(req,res)=>{
     console.log('File:',req.file);

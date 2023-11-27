@@ -3,9 +3,24 @@ const path = require('path');
 
 const router = express.Router();
 
-router.get('/home', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../public', 'home.html'));
-    console.log("Hubo un get a localhost (home)");
+router.get('/:page', (req, res) => {
+    const pageName = req.params.page;
+    const filePath = path.join(__dirname, '../../public', `${pageName}.html`);
+
+    // Check if the requested HTML file exists
+    if (isValidPage(pageName)) {
+        res.sendFile(filePath);
+        console.log(`Hubo un GET a localhost (${pageName})`);
+    } else {
+        res.status(404).send('Not Found');
+    }
 });
 
+// Helper function to validate valid HTML pages
+function isValidPage(pageName) {
+    const allowedPages = ['home', 'newDocument', 'checkDocuments']; // Add more pages as needed
+    return allowedPages.includes(pageName);
+}
+
 module.exports = router;
+
