@@ -1,14 +1,14 @@
-const Document = require('./../models/document');
+const Permit = require('./../models/permit');
+
 const jwt = require('jsonwebtoken');
 
-class DocumentController {
+class PermitController {
     insertar(req, res) {
-        console.log("ENTRASTE AL CONTROLLER");
-        req.body.owner = req.user._id
+        console.log("ENTRASTE AL CONTROLLER de permisos");
         const documentData = req.body;
-        
-        console.log(req.user._id);
-        Document.create(documentData)
+        documentData.owner = req.user._id;
+        console.log(documentData);
+        Permit.create(documentData)
             .then(response => {
                 console.log(response);
                 if (response) {
@@ -25,7 +25,7 @@ class DocumentController {
     }
 
     ver(req, res) {
-        Document.find({ owner: req.user._id })
+        Permit.find({ owner: req.user._id })
             .then(response => {
                 console.log('Respuesta: ', response);
                 res.send(response);
@@ -36,4 +36,4 @@ class DocumentController {
     }
 }
 
-module.exports = new DocumentController();
+module.exports = new PermitController();
