@@ -129,7 +129,7 @@ dist
 
 #files
 test/
-uploads/*
+uploads/
 
 
 
