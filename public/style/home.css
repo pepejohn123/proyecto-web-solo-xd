@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding-top: 56px; /* Adjusted for the fixed navbar */
+}
+
+.navbar {
+    background-color: #4caf50;
+}
+
+.navbar-brand img {
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.navbar-nav {
+    flex-direction: row;
+}
+
+.nav-item {
+    padding: 0 15px;
+}
+
+.profile-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.options-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.option-card {
+    width: 45%;
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    cursor: pointer; /* Add cursor pointer for better UX */
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+}
+
+.option-card:hover {
+    background-color: #f0f0f0; /* Change the background color on hover */
+}
+
+.option-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.change-picture-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #3bc842;
+    color: #fff;
+    cursor: pointer;
+}
+
+.change-picture-btn:hover {
+    background-color: #26872b;
+}
+.change-picture-btn-navbar {
+    margin-left: auto; /* Push the button to the right */
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" href="/assets/style/register.css">
+
+</head>
+
+<body>
+    <div class="registration-container">
+        <h2>User Registration</h2>
+        <form class="registration-form" id="registration" action="/register" method="post">
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required>
+
+            <label for="fathers_last_name">Father's Last Name:</label>
+            <input type="text" id="fathers_last_name" name="fathers_last_name" required>
+
+            <label for="mothers_last_name">Mother's Last Name:</label>
+            <input type="text" id="mothers_last_name" name="mothers_last_name" required>
+
+            <label for="birthdate">Birthdate:</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="nationality">Nationality:</label>
+            <input type="text" id="nationality" name="nationality" required>
+
+            <label for="civil_state">Civil State:</label>
+            <input type="text" id="civil_state" name="civil_state" required>
+
+            <label for="birth_entity">Birth Entity:</label>
+            <input type="text" id="birth_entity" name="birth_entity" required>
+
+            <label for="birth_municipality">Birth Municipality:</label>
+            <input type="text" id="birth_municipality" name="birth_municipality" required>
+
+            <label for="entity_of_birth">Entity of Birth:</label>
+            <input type="text" id="entity_of_birth" name="entity_of_birth" required>
+
+            <label for="genre">Genre:</label>
+            <select id="genre" name="genre" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/assets/scripts/register.js"></script>
+</body>
+
+</html>
