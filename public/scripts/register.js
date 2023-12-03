@@ -22,7 +22,7 @@ $(document).ready(function () {
 
         $.post('http://localhost:3000/register', formData, function (res) {
             // Assuming the server redirects to a success page
-            window.location.href = "/assets/end.html";
+            window.location.href = "/login";
         })
         .fail(function (error) {
             // Handle registration failure, show error messages, etc.

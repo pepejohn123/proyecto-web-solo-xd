@@ -1,5 +1,6 @@
 const { log } = require('console');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 
 const secretKey = process.env.SECRET_KEY;
 

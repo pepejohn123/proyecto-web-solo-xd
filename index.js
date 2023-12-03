@@ -18,10 +18,16 @@ app.get('/login',(req, res) /* importa el orden */ =>{
 })
 
 
+app.get('/register',(req, res) /* importa el orden */ =>{
+    res.sendFile(path.join(__dirname,'public','register.html'))
+    console.log("Hubo un get a localhost");
+})
+
+
 
 
 app.use('/assets',express.static('public'));
-app.use('/uploads',express.static('uploads'));
+//app.use('/uploads',express.static('uploads'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

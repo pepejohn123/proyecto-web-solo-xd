@@ -1,94 +1,100 @@
 $(document).ready(function () {
     $('#form').submit(function (event) {
-
-        // Prevent the default form submission
         event.preventDefault();
         const baseUrl = localStorage.getItem('url');
         const id = localStorage.getItem('id');
-        var inputFile = $('#fileInput')[0]; // Assuming your file input has an ID of 'file'
-        file = inputFile.files[0];
+        const inputFile = $('#fileInput')[0];
+        const file = inputFile.files[0];
         const image = new FormData();
 
-        ext = inputFile.files[0].name;
-        ext = ext.split('.').pop();
+        const exte = inputFile.files[0].name.split('.').pop();
+        console.log(exte);
         const name = $('#name').val();
-        const filename = `${id}-${name}.${ext}`;
-        image.append('name', name);
-        image.append('scan', fileInput.files[0]);
+
+        var permit ={}
 
         // Get form data
         var formData = {
             name: $('#name').val(),
             expedition_date: $('#expeditionDate').val(),
             expiration_date: $('#expirationDate').val(),
-            image_url: filename
-
+            ext: exte
             // Add other form fields as needed
         };
+        console.log(formData);
 
+        let document_id = 0;
         // Send data in a POST request
         $.ajax({
             type: 'POST',
-            url: baseUrl + "credentials", // Replace with your server endpoint
+            url: baseUrl + 'credentials',
             data: formData,
-            success: function (response) {
-                // Handle success
-                console.log('Success:', response);
-                performSecondPost(baseUrl,image, formData);
-
-            },
-            error: function (error) {
-                // Handle error
+        })
+            .then(function (response) {
+                document_id = response._id;
+                image.append('name', response._id);
+                image.append('scan', file);
+                console.log('First POST request successful:', response);
+                permit = {
+                    "owner": response.owner,
+                    "document": response._id,
+                    "permitted_users": []
+                }
+                return performSecondPost(baseUrl, image);
+            })
+            .then(function (secondResponse) {
+                console.log(formData);
+                console.log('Second POST request successful:', secondResponse);
+                
+                console.log(permit);
+                return performThirdPost(baseUrl, permit);
+            })
+            .then(function (thirdResponse) {
+                console.log('Third POST request successful:', thirdResponse);
+                // Continue with any further actions
+                alert('Added!');
+            })
+            .catch(function (error) {
                 console.error('Error:', error);
-            }
-        });
+            });
     });
 
-    function performSecondPost(baseUrl,image,formData) {
-        
-        // You can customize this part based on your needs
-        $.ajax({
-            type: 'POST',
-            url: baseUrl + 'newDocument', // Replace with your second endpoint
-            data: image, // Replace with your second POST data
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                console.log('Second POST request successful:', response);
-                const permit = new FormData();
-                console.log(response);
-                permit.append('owner',response.owner);
-                permit.append('document',response._id)
-                // Continue with any further actions
-                alert("Added!");
-                //window.location.href = "/home";
-                performThirdPost(baseUrl,permit);
-            },
-            error: function (error) {
-                console.error('Error in second POST request:', error);
-            }
+    function performSecondPost(baseUrl, image) {
+        return new Promise(function (resolve, reject) {
+            $.ajax({
+                type: 'POST',
+                url: baseUrl + 'newDocument',
+                data: image,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    resolve(response);
+                },
+                error: function (error) {
+                    reject(error);
+                }
+            });
         });
     }
-    function performThirdPost(baseUrl,permit) {
-        
-        // You can customize this part based on your needs
-        $.ajax({
-            type: 'POST',
-            url: baseUrl + 'permits', // Replace with your second endpoint
-            data: permit, // Replace with your second POST data
-            contentType: false,
-            processData: false,
-            success: function (response) {
-                console.log('Third POST request successful:', response);
-                // Continue with any further actions
-                //window.location.href = "/home";
-            },
-            error: function (error) {
-                console.error('Error in second POST request:', error);
-            }
+
+    function performThirdPost(baseUrl, formData) {
+        console.log(formData);
+
+
+        return new Promise(function (resolve, reject) {
+            $.ajax({
+                type: 'POST',
+                url: baseUrl + 'permits',
+                data: formData,
+                success: function (response) {
+                    resolve(response);
+                },
+                error: function (error) {
+                    reject(error);
+                }
+            });
         });
     }
+
+
 });
-
-
-

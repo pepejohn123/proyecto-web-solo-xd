@@ -5,22 +5,22 @@ const multer = require('multer');
 // Multer storage configuration
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads');
+        cb(null, 'scans');
     },
     filename: (req, file, cb) => {
         // Use the provided file name or generate a unique name
         const id = req.user._id;
         const name = req.body.name;
-        console.log(name);
         const ext = file.originalname.split('.').pop();
-        const filename = `${id}-${name}.${ext}`;
+        const filename = `${name}.${ext}`;
         cb(null, filename);
     },
 });
 
 // Multer file filter
 const fileFilter = (req, file, cb) => {
-    const isValid = file.mimetype.startsWith('image/');
+    const isValid = file.mimetype.startsWith('image/') || file.mimetype === 'application/pdf';
+    
     cb(null, isValid);
 };
 

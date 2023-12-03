@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Document List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/style/home.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #4caf50;">
+        <a class="navbar-brand">
+            <img src="https://www.marismith.com/wp-content/uploads/2014/07/facebook-profile-blank-face.jpeg"
+                alt="Profile Image" class="profile-img">
+            <span id="userName">Welcome to all your documents! </span>
+        </a>
+    </nav>
+
+    <div class="container">
+        <h2 class="mt-4 mb-4">Document List</h2>
+
+        <table class="table document-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Expedition Date</th>
+                    <th>Expiration Date</th>
+                    <th>img</th>
+                    <th>url</th>
+                    <!-- Add more columns as needed based on your JSON structure -->
+                </tr>
+            </thead>
+            <tbody id="documentTableBody">
+                <!-- Table content will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/assets/scripts/user_info.js"></script>
+    <script src="/assets/scripts/allDocuments.js"></script>
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModalLabel">Edit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Your form content goes here -->
+                    <form id="editForm">
+                        <div class="form-group">
+                            <label for="documentName">Document Name:</label>
+                            <input type="text" class="form-control" id="documentName">
+                        </div>
+                        <div class="form-group">
+                            <label for="expeditionDate">Expedition Date:</label>
+                            <input type="date" class="form-control" id="expeditionDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="expirationDate">Expiration Date:</label>
+                            <input type="date" class="form-control" id="expirationDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="documentImage">Change Scan:</label>
+                            <input type="file" class="form-control-file" id="documentImage" accept="image/*">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveChangesBtn">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

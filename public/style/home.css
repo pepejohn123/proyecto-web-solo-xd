@@ -3,6 +3,18 @@ body {
     background-color: #f4f4f4;
     padding-top: 56px; /* Adjusted for the fixed navbar */
 }
+.copy-button{
+    border: none;
+    border-radius: 8px;
+    background-color: #3bc842;
+    color: #fff;
+    cursor: pointer;
+    
+}
+
+.copy-button-btn:hover {
+    background-color: #26872b;
+}
 
 .navbar {
     background-color: #4caf50;
@@ -69,3 +81,22 @@ body {
 .change-picture-btn-navbar {
     margin-left: auto; /* Push the button to the right */
 }
+
+.hidden-image {
+    display: none;
+  }
+
+  #managePermissionsBtn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #3bc842;
+    color: #fff;
+    cursor: pointer;
+}
+
+#managePermissionsBtn:hover {
+    background-color: #26872b;
+}
+
+

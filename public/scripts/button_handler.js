@@ -22,22 +22,16 @@ $(document).ready(function () {
     seeDocumentButton.addEventListener('click', function () {
         console.log('See Document button clicked');
         // Add your logic here
+        window.location.href = "/allDocuments";
     });
 
     managePermissionButton.addEventListener('click', function () {
         console.log('Manage Permissions button clicked');
         // Add your logic here
+        window.location.href = "/managePermits";
+
     });
 
-    historialButton.addEventListener('click', function () {
-        console.log('Historial button clicked');
-        // Add your logic here
-    });
-
-    addSnapshotButton.addEventListener('click', function () {
-        console.log('new Snapshot button clicked');
-        // Add your logic here
-    });
     editDocumentButton.addEventListener('click', function () {
         console.log('edit Document button clicked');
         // Add your logic here
