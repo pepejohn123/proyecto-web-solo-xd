@@ -1,5 +1,6 @@
 $(document).ready(function () {
     const baseUrl = localStorage.getItem('url');
+    var documentInfo;  // Declare a variable to store the document information
 
     // Function to handle search input change
     $('#searchInput').on('keyup', function (event) {
@@ -49,7 +50,12 @@ $(document).ready(function () {
                             </td>
                             <td>${userList}</td>
                             <td>
-                                <button class="btn btn-success open-form-button" data-document-name="${document.name}" data-document-id="${document._id}" data-toggle="modal" data-target="#permissionsModal">Manage Permissions</button>
+                                <button class="btn btn-success open-form-button"
+                                        data-document-name="${document.name}"
+                                        data-document-id="${document._id}"
+                                        data-toggle="modal"
+                                        data-target="#permissionsModal">Manage Permissions
+                                </button>
                             </td>
                         </tr>`;
 
@@ -58,18 +64,15 @@ $(document).ready(function () {
                 });
 
                 // Attach click event handler for the "Manage Permissions" buttons
-                $('.open-form-button').on('click', function () {
+                $('#documentTableBody').on('click', '.open-form-button', function () {
                     // Retrieve the document data from the button's data attributes
                     var documentName = $(this).data('document-name');
                     var documentId = $(this).data('document-id');
                     console.log("se armó");
+                    console.log(documentId);
 
-                    // Populate the form in the modal with the document data
-                    $('#addPersonInput').val(documentName);
-                    // Add more lines to populate other form fields as needed
-
-                    // Store the document information in a variable or use it directly in your logic
-                    var documentInfo = {
+                    // Store the document information in the variable
+                    documentInfo = {
                         name: documentName,
                         id: documentId
                         // Add more properties if needed
@@ -92,15 +95,55 @@ $(document).ready(function () {
     $('#permissionsForm').on('submit', function (event) {
         // Prevent the default form submission behavior
         event.preventDefault();
-        console.log("aaaa");
+        console.log("submit!");
 
-        // Access the document information directly from the button's data attributes
-        var documentName = $('.open-form-button').data('document-name');
-        var documentId = $('.open-form-button').data('document-id');
+        // Access the document information stored outside this event handler
+        if (documentInfo) {
+            var documentName = documentInfo.name;
+            var documentId = documentInfo.id;
+            console.log(documentId);
 
-        if ($('#addPersonInput').val()) {
+            // Your existing logic for processing the form data goes here
+            if ($('#addPersonInput').val()) {
+                var info = {}
+                info.add = $('#addPersonInput').val();
+                info.document = documentId;
+                console.log(info);
+                $.ajax({
+                    url: baseUrl + 'permits',
+                    method: "PUT",
+                    data: info,
+                    success: function (data) {
+                        console.log("Added!:", data);
+                    },
+                    error: function (error) {
+                        console.error("Error:", error);
+                    }
+                });
+            }
+            if ($('#removePersonInput').val()) {
+                console.log("entraste ermano");
+                var info = {}
+                info.remove = $('#removePersonInput').val();
+                info.document = documentId;
+                console.log(info);
+                $.ajax({
+                    url: baseUrl + 'permits',
+                    method: "DELETE",
+                    data: info,
+                    success: function (data) {
+                        console.log("Removed!:", data);
+                    },
+                    error: function (error) {
+                        console.error("Error:", error);
+                    }
+                });
+            }
+            var isChecked = $('#publicCheckbox').prop('checked');
+
+            console.log('Checkbox is checked');
             var info = {}
-            info.add = $('#addPersonInput').val();
+            info.public = $('#publicCheckbox').prop('checked');
             info.document = documentId;
             console.log(info);
             $.ajax({
@@ -115,44 +158,5 @@ $(document).ready(function () {
                 }
             });
         }
-        if ($('#removePersonInput').val()) {
-            console.log("entraste ermano");
-            var info = {}
-            info.remove = $('#removePersonInput').val();
-            info.document = documentId;
-            console.log(info);
-            $.ajax({
-                url: baseUrl + 'permits',
-                method: "DELETE",
-                data: info,
-                success: function (data) {
-                    console.log("Removed!:", data);
-                },
-                error: function (error) {
-                    console.error("Error:", error);
-                }
-            });
-        }
-        var isChecked = $('#publicCheckbox').prop('checked');
-
-        console.log('Checkbox is checked');
-        var info = {}
-        info.public = $('#publicCheckbox').prop('checked');
-        info.document = documentId;
-        console.log(info);
-        $.ajax({
-            url: baseUrl + 'permits',
-            method: "PUT",
-            data: info,
-            success: function (data) {
-                console.log("Added!:", data);
-            },
-            error: function (error) {
-                console.error("Error:", error);
-            }
-        });
-        // Perform actions when the checkbox is checked
-
-
     });
 });
