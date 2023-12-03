@@ -1,15 +1,17 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    padding-top: 56px; /* Adjusted for the fixed navbar */
+    padding-top: 56px;
+    /* Adjusted for the fixed navbar */
 }
-.copy-button{
+
+.copy-button {
     border: none;
     border-radius: 8px;
     background-color: #3bc842;
     color: #fff;
     cursor: pointer;
-    
+
 }
 
 .copy-button-btn:hover {
@@ -54,18 +56,22 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #fff;
-    cursor: pointer; /* Add cursor pointer for better UX */
-    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+    cursor: pointer;
+    /* Add cursor pointer for better UX */
+    transition: background-color 0.3s ease;
+    /* Add a smooth transition effect */
 }
 
 .option-card:hover {
-    background-color: #f0f0f0; /* Change the background color on hover */
+    background-color: #f0f0f0;
+    /* Change the background color on hover */
 }
 
 .option-icon {
     font-size: 24px;
     margin-bottom: 10px;
 }
+
 .change-picture-btn {
     padding: 10px 15px;
     border: none;
@@ -78,15 +84,17 @@ body {
 .change-picture-btn:hover {
     background-color: #26872b;
 }
+
 .change-picture-btn-navbar {
-    margin-left: auto; /* Push the button to the right */
+    margin-left: auto;
+    /* Push the button to the right */
 }
 
 .hidden-image {
     display: none;
-  }
+}
 
-  #managePermissionsBtn {
+#managePermissionsBtn {
     padding: 10px 15px;
     border: none;
     border-radius: 8px;
@@ -100,3 +108,7 @@ body {
 }
 
 
+#dataTable,
+#dataTableHeader {
+    display: none;
+}

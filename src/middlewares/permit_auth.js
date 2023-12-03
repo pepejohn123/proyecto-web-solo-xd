@@ -20,16 +20,9 @@ const permitMiddleware = (req, res, next) => {
     Permit.findOne({ document: result })
         .then(response => {
             if (response) {
-                console.log(response);
                 var email = user.email;
-                console.log(email);
-                console.log(response.permitted_users);
-
                 const owner_check = response.owner == req.user._id;
-
                 const permitted_check = response.permitted_users.includes(email);
-
-
                 if (owner_check || permitted_check) {
                     next();
                 }

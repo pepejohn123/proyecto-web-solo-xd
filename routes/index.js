@@ -10,6 +10,7 @@ const fs = require('fs');
 
 const authMiddleware = require('../src/middlewares/auth');
 const permitMiddleware = require('../src/middlewares/permit_auth');
+const publicMiddleware = require('../src/middlewares/public_auth');
 
 
 //const usersController = require('../src/controllers/users');
@@ -23,7 +24,7 @@ const permitController = require('../src/controllers/permit')
 router.use(express.json());
 router.use(cookieParser());
 router.use('/uploads',express.static('uploads'));
-router.use('/scans',authMiddleware,permitMiddleware,express.static('scans'));
+router.use('/scans',publicMiddleware,express.static('scans'));
 //router.use('/scans',authMiddleware,express.static('scans'));
 
 const uploadMiddlewarePP = require('../src/middlewares/uploadPP.js');
