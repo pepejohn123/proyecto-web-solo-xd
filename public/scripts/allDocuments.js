@@ -98,6 +98,7 @@ $(document).ready(function () {
                     performSecondPost(baseUrl, image)
                         .then(function () {
                             alert("Document edited successfully:\n" + JSON.stringify(updateData, null, 2));
+
                             location.reload();
 
                         })
@@ -170,6 +171,7 @@ $(document).ready(function () {
                     method: 'DELETE',
                     data: { documentId: documentId },
                     success: function (data) {
+                        
                         var fileData = {
                             name: documentId,
                             ext: ext
@@ -178,6 +180,8 @@ $(document).ready(function () {
                         deleteImage(baseUrl, fileData) // Uncomment this line
                             .then(function () {
                                 console.log("Document and image deleted successfully:", data);
+                                location.reload();
+
                                 // Reload the table or update the UI as needed
                             })
                             .catch(function (error) {

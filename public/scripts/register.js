@@ -28,6 +28,8 @@ $(document).ready(function () {
             // Handle registration failure, show error messages, etc.
             console.error("Registration failed:", error.responseText);
             // You might want to display an error message to the user
+            alert('Registration failed. Please check the provided information and try again. Probably the email was already used');
+            
         });
     });
 });

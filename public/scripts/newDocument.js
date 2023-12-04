@@ -53,6 +53,8 @@ $(document).ready(function () {
                 console.log('Third POST request successful:', thirdResponse);
                 // Continue with any further actions
                 alert('Added!');
+                window.location.href = "/allDocuments";
+
             })
             .catch(function (error) {
                 console.error('Error:', error);

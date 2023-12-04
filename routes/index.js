@@ -25,8 +25,8 @@ const userController = require('../src/controllers/user')
 
 router.use(express.json());
 router.use(cookieParser());
-router.use('/uploads',express.static('uploads'));
-router.use('/scans',publicMiddleware,express.static('scans'));
+router.use('/uploads', express.static('uploads'));
+router.use('/scans', publicMiddleware, express.static('scans'));
 //router.use('/scans',authMiddleware,express.static('scans'));
 
 const uploadMiddlewarePP = require('../src/middlewares/uploadPP.js');
@@ -38,6 +38,7 @@ router.post('/login', loginController.login);
 //Users
 
 router.post('/register', registerController.register);
+
 
 router.use(authMiddleware);
 router.get('/credentials', documentController.ver);
@@ -55,46 +56,58 @@ router.put('/profile', profileController.editar);
 router.get('/profile/mine', profileController.lookByID);
 
 router.get('/profile/:parameter', profileController.public);
-router.get('/:page', homeController);
 
 router.post('/upload', uploadMiddlewarePP.single('archivo'), (req, res) => {
-    console.log('File:', req.file);
-    if (req.file) {
-      res.send('OK!');
+  console.log('File:', req.file);
+  if (req.file) {
+    res.send('OK!');
+  } else {
+    res.status(400).send('Invalid format');
+  }
+});
+
+router.delete('/newDocument', (req, res) => {
+  const filename = req.body.name;
+  const ext = req.body.ext;
+  const filePath = `scans/${filename}.${ext}`;
+
+  console.log('File:', filePath);
+
+  fs.unlink(filePath, (err) => {
+    if (err) {
+      console.error(`Error deleting file: ${err}`);
+      res.status(500).json({ error: 'Error deleting file' });
     } else {
-      res.status(400).send('Invalid format');
+      console.log(`File deleted: ${filename}`);
+      res.json({ message: 'File deleted successfully' });
     }
   });
+});
 
-  router.delete('/newDocument', (req, res) => {
-    const filename  = req.body.name;
-    const ext  = req.body.ext;
-    const filePath = `scans/${filename}.${ext}`;
+router.post('/newDocument', uploadMiddlewareScan.single('scan'), (req, res) => {
+  console.log('File:', req.body.name);
+  if (req.file) {
+    //append(name)
+    res.send('OK!');
+  } else {
+    res.status(400).send('Invalid format');
+  }
+});
 
-    console.log('File:', filePath);
-   
-    fs.unlink(filePath, (err) => {
-      if (err) {
-          console.error(`Error deleting file: ${err}`);
-          res.status(500).json({ error: 'Error deleting file' });
-      } else {
-          console.log(`File deleted: ${filename}`);
-          res.json({ message: 'File deleted successfully' });
-      }
-  });
-  });
+router.get('/:page', homeController);
 
-  router.post('/newDocument', uploadMiddlewareScan.single('scan'), (req, res) => {
-    console.log('File:', req.body.name);
-    if (req.file) {
-      //append(name)
-      res.send('OK!');
-    } else {
-      res.status(400).send('Invalid format');
-    }
-  });
+router.use((err, req, res, next) => {
+  console.log("notiene permiso ijo");
+  if (err.status === 401) {
+    res.status(401).sendFile(path.join(__dirname, '../public', '401.html'));
+  } else {
+    next(err);
+  }
+});
 
-
-
+router.use((req, res) => {
+  console.log("SIIIII ENTRÓ");
+  res.status(404).sendFile(path.join(__dirname, '../public', '404.html'));
+});
 
 module.exports = router; /* se pone al final pa que esté todo definido cuando se llame */

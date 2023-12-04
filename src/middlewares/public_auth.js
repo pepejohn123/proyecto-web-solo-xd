@@ -27,7 +27,7 @@ const publicMiddleware = (req, res, next) => {
                     //console.log(token);
                     jwt.verify(token, secretKey, (err, decode) => {
                         if (err) {
-                            res.status(401).send({ msg: 'No estás logeado' })
+                            res.sendStatus(401)
                         }
                         else {
                             req.user = decode; //modificar la información encriptada, se la pasas desencriptada (por referencia)

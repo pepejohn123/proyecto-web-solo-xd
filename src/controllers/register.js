@@ -4,15 +4,22 @@ const Profile = require('./../models/profile');
 class RegisterController {
   async register(req, res) {
     try {
-      const userData = req.body;
+      const { email, password } = req.body;
       console.log(req.body);
+      // Check if a user with the provided email already exists
+      const existingUser = await User.findOne({ email });
 
-      const userResponse = await User.create(userData);
+      if (existingUser) {
+        // User with the same email already exists, send a failed response
+        return res.status(400).send('User with this email already exists');
+      }
+
+      // Proceed with user creation if the email is not found
+      const userResponse = await User.create({ email, password, type });
       console.log('User created:', userResponse);
 
       if (userResponse) {
         req.body.owner = userResponse._id;
-        console.log('User created, req used and response', req.body, userResponse);
 
         const profileResponse = await Profile.create(req.body);
         console.log('Profile created:', profileResponse);
@@ -21,8 +28,7 @@ class RegisterController {
           req.body.owner = profileResponse._id;
           console.log('Profile created, req used and response', req.body, profileResponse);
           // Handle any additional logic after creating a profile if needed
-          res.send(response);
-
+          res.send(profileResponse);
         } else {
           res.sendStatus(400);
         }

@@ -157,6 +157,8 @@ $(document).ready(function () {
                     console.error("Error:", error);
                 }
             });
+            location.reload();
+
         }
     });
 });
