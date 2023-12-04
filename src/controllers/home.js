@@ -18,7 +18,7 @@ router.get('/:page', (req, res) => {
 
 // Helper function to validate valid HTML pages
 function isValidPage(pageName) {
-    const allowedPages = ['home', 'newDocument', 'checkDocuments','allDocuments', 'managePermits']; // Add more pages as needed
+    const allowedPages = ['home', 'newDocument', 'checkDocuments','allDocuments', 'managePermits','seeProfiles']; // Add more pages as needed
     return allowedPages.includes(pageName);
 }
 

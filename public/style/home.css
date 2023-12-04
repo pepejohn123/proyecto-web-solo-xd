@@ -108,7 +108,71 @@ body {
 }
 
 
-#dataTable,
-#dataTableHeader {
+#dataTable {
     display: none;
+}
+
+/* Your existing CSS styles */
+
+#userInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Add this line for positioning */
+}
+
+#userInfo img {
+    border-radius: 50%;
+    margin-right: 10px;
+    width: 80px;
+    height: 80px;
+}
+
+#userInfo div {
+    flex-grow: 1;
+}
+
+#userInfo span.title {
+    display: inline-block;
+    margin-right: 8px;
+    font-weight: bold;
+    color: black;
+}
+
+#userInfo span {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: normal;
+}
+
+/* Updated styles for checkbox and button */
+#userInfo .form-check {
+    margin-left: auto; /* Move the checkbox and button to the right */
+}
+
+#userInfo #publicCheckbox {
+    margin-right: 5px; /* Adjust margin as needed */
+}
+
+
+#userInfo #updatePublicStatusBtn {
+    padding: 8px 15px;
+    margin-left: auto;
+    background-color: #4caf50; /* Greenish color */
+    color: #fff; /* Text color */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+#userInfo #updatePublicStatusBtn:hover {
+    background-color: #45a049; /* Darker greenish color on hover */
 }

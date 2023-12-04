@@ -20,6 +20,8 @@ const registerController = require('../src/controllers/register')
 const documentController = require('../src/controllers/document')
 const homeController = require('../src/controllers/home')
 const permitController = require('../src/controllers/permit')
+const profileController = require('../src/controllers/profile')
+const userController = require('../src/controllers/user')
 
 router.use(express.json());
 router.use(cookieParser());
@@ -39,6 +41,7 @@ router.post('/register', registerController.register);
 
 router.use(authMiddleware);
 router.get('/credentials', documentController.ver);
+router.get('/user/:id', userController.verPorId);
 router.get('/credentials/:name', documentController.porNombre);
 router.post('/credentials', documentController.insertar);
 router.put('/credentials', documentController.actualizar);
@@ -47,6 +50,11 @@ router.get('/permits/:id', permitController.porDocumento);
 router.post('/permits', permitController.insertar);
 router.put('/permits', permitController.add);
 router.delete('/permits', permitController.borrar);
+router.get('/profile', profileController.public);
+router.put('/profile', profileController.editar);
+router.get('/profile/mine', profileController.lookByID);
+
+router.get('/profile/:parameter', profileController.public);
 router.get('/:page', homeController);
 
 router.post('/upload', uploadMiddlewarePP.single('archivo'), (req, res) => {

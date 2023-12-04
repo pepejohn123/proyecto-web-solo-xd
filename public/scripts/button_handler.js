@@ -5,9 +5,7 @@ $(document).ready(function () {
     var newDocumentButton = document.getElementById('newDocument');
     var seeDocumentButton = document.getElementById('seeDocument');
     var managePermissionButton = document.getElementById('managePermission');
-    var historialButton = document.getElementById('historial');
-    var addSnapshotButton = document.getElementById('addSnapshot');
-    var editDocumentButton = document.getElementById('editDocument');
+    var editDocumentButton = document.getElementById('profiles');
 
     // Add click event listeners
     newDocumentButton.addEventListener('click', function () {
@@ -35,6 +33,8 @@ $(document).ready(function () {
     editDocumentButton.addEventListener('click', function () {
         console.log('edit Document button clicked');
         // Add your logic here
+        window.location.href = "/seeProfiles";
+
     });
 
 
