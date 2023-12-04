@@ -15,7 +15,7 @@ class RegisterController {
       }
 
       // Proceed with user creation if the email is not found
-      const userResponse = await User.create({ email, password, type });
+      const userResponse = await User.create({ email, password });
       console.log('User created:', userResponse);
 
       if (userResponse) {
