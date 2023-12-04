@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Manage Permissions</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/style/home.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #4caf50;">
+        <a class="navbar-brand">
+            <img src="https://www.marismith.com/wp-content/uploads/2014/07/facebook-profile-blank-face.jpeg"
+                alt="Profile Image" class="profile-img">
+            <span id="userName">Welcome to Profiles manager! </span>
+        </a>
+        <a href="/home" class="btn home-btn ml-auto">Home</a>
+
+    </nav>
+    <div id="userInfo" class="container mt-3">
+        
+        <img src="https://www.marismith.com/wp-content/uploads/2014/07/facebook-profile-blank-face.jpeg" alt="User Image" class="profile-img" id="userImage">
+        <div>
+            <div class="info-group">
+                <span class="title" id="userEmailTitle">Email:</span>
+                <span id="userEmail"></span>
+            </div>
+            <div class="info-group">
+                <span class="title" id="userNameTitle">Name:</span>
+                <span id="userFullName"></span>
+            </div>
+            <div class="info-group">
+                <span class="title" id="userNationalityTitle">Nationality:</span>
+                <span id="userNationality"></span>
+            </div>
+            <div class="info-group">
+                <span class="title" id="userGenreTitle">Genre:</span>
+                <span id="userGenre"></span>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-md-6 offset-md-6 text-right">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="publicCheckbox">
+                        <label class="form-check-label" for="publicCheckbox">Public</label>
+                    </div>
+                    <button class="btn btn-primary mt-2" id="updatePublicStatusBtn">Update Public Status</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- New section for search input and table -->
+    <div class="container mt-2">
+        
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search...">
+        </div>
+        <table class="table" id="documentTableBody">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Email</th>
+                    <th>Nationality</th>
+                    <th>Genre</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/assets/scripts/user_info.js"></script>
+    <script src="/assets/scripts/myProfile.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="/assets/scripts/searchProfiles.js"></script>
+    <script src="/assets/scripts/setProfile.js"></script>
+    
+    <!-- Your existing script tags here -->
+</body>
+
+</html>

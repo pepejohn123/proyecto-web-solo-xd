@@ -12,7 +12,7 @@ const authMiddleware = (req,res,next)=>{
         }
         else{
             req.user = decode; //modificar la información encriptada, se la pasas desencriptada (por referencia)
-            //console.log(req.user._id);
+            console.log(req.user);
             
             next();
         }

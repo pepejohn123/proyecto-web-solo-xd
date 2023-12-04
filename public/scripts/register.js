@@ -19,15 +19,19 @@ $(document).ready(function () {
         };
 
         console.log(formData);
+        var baseUrl = window.location.href
 
-        $.post('http://localhost:3000/register', formData, function (res) {
+
+        $.post(baseUrl, formData, function (res) {
             // Assuming the server redirects to a success page
-            window.location.href = "/assets/end.html";
+            window.location.href = "/login";
         })
         .fail(function (error) {
             // Handle registration failure, show error messages, etc.
             console.error("Registration failed:", error.responseText);
             // You might want to display an error message to the user
+            alert('Registration failed. Please check the provided information and try again. Probably the email was already used');
+
         });
     });
 });

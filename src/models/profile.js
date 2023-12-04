@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const{model, Schema} = require('mongoose');
 
 const schema = new Schema({
@@ -11,7 +13,9 @@ const schema = new Schema({
     birth_entity: {type:String, require:true},
     birth_municipality: {type:String, require:true},
     entity_of_birth: {type:String, require:true},
-    genre: {type:String, require:true}
+    genre: {type:String, require:true},
+    public: {type:Boolean,default: false, require:true}
+    
 });
 
 module.exports = model('profile', schema);

@@ -6,6 +6,7 @@ class LoginController{
     login(req,res){
         const {email, password} = req.body;
         console.log(req.body);
+        
         User.findOne({email, password})
             .then(response=>{
                 console.log(response);

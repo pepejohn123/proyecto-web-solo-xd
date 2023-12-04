@@ -1,0 +1,12 @@
+body {
+    background-color: #e0f7fa; /* Light blue background */
+  }
+
+  .container {
+    margin-top: 100px;
+  }
+
+  .btn-greenish {
+    background-color: #4caf50; /* Green button color */
+    color: white;
+  }
