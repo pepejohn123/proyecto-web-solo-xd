@@ -96,14 +96,6 @@ router.post('/newDocument', uploadMiddlewareScan.single('scan'), (req, res) => {
 
 router.get('/:page', homeController);
 
-router.use((err, req, res, next) => {
-  console.log("notiene permiso ijo");
-  if (err.status === 401) {
-    res.status(401).sendFile(path.join(__dirname, '../public', '401.html'));
-  } else {
-    next(err);
-  }
-});
 
 router.use((req, res) => {
   console.log("SIIIII ENTRÓ");
