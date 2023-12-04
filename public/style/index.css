@@ -1,0 +1,38 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ea; /* Light greenish background color */
+    text-align: center;
+    margin: 50px;
+}
+
+h1 {
+    color: #2ecc71; /* Green color for the heading */
+}
+
+.logo {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0; /* Add margin for spacing */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box-shadow for elegance */
+}
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.login-button {
+    background-color: #27ae60; /* Darker green for login button */
+    color: #ffffff; /* White text */
+}
+
+.register-button {
+    background-color: #2ecc71; /* Lighter green for register button */
+    color: #ffffff; /* White text */
+}

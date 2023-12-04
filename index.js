@@ -12,6 +12,12 @@ const port = process.env.PORT || 3001; //3000
 const secretKey = process.env.SECRET_KEY; //helloworld
 const app = express();
 
+app.get('', (req, res) /* importa el orden */ => {
+    res.sendFile(path.join(__dirname, 'public', 'trueIndex.html'))
+    console.log("Hubo un get a localhost");
+})
+
+
 app.get('/login', (req, res) /* importa el orden */ => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
     console.log("Hubo un get a localhost");
