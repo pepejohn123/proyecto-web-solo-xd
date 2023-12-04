@@ -176,3 +176,17 @@ body {
 #userInfo #updatePublicStatusBtn:hover {
     background-color: #45a049; /* Darker greenish color on hover */
 }
+
+
+.home-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #3bc842;
+    color: #fff;
+    cursor: pointer;
+}
+
+.home-btn:hover {
+    background-color: #26872b;
+}
